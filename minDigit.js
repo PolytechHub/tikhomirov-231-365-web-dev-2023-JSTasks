@@ -1,13 +1,16 @@
 function minDigit(x) {
-    let str = x.toString();
-    let min = parseInt(str[0]);
-    for (let i = 1; i < str.length; i++) {
-      let digit = parseInt(str[i]);
-      if (digit < min) {
-        min = digit;
-      }
-    }
-    return min;
+  let miniDigit = 9;
+  if (x == 0) {
+    return 0;
   }
-
+  while (x != 0) {
+    let lastDigit = x % 10;
+    if (lastDigit < miniDigit) {
+      miniDigit = lastDigit;
+    }
+    x -= lastDigit;
+    x /= 10;
+  }
+  return miniDigit;
+}
 console.log(minDigit(228337))
